@@ -93,7 +93,6 @@ ul { list-style: none; }
     height: 100vh;
     background: url('images/hero.jpg') no-repeat center center/cover;
     position: relative;
-    /* Si no tienes hero.jpg aun, usará un color plano temporalmente */
     background-color: #222; 
 }
 
@@ -128,7 +127,60 @@ ul { list-style: none; }
 .about-text h2 { color: var(--primary); margin-bottom: 20px; font-size: 2.5rem; }
 .about-text p { margin-bottom: 15px; color: var(--text-grey); }
 
-/* Gallery */
+/* Schedule Box (NUEVO) */
+.schedule-box {
+    background-color: var(--dark-grey);
+    border: 3px solid var(--primary); 
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 0 auto; 
+    text-align: center;
+    box-shadow: 0 0 15px rgba(196, 30, 58, 0.4);
+}
+
+.schedule-box h3 {
+    color: var(--accent);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.schedule-list {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-left: 0; 
+}
+
+.schedule-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.schedule-list li:last-child {
+    border-bottom: none;
+}
+
+.schedule-list .day {
+    font-weight: bold;
+    color: var(--light);
+}
+
+.schedule-list .time {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.coming-soon {
+    color: var(--text-grey);
+    font-style: italic;
+    margin-top: 15px;
+    font-size: 0.95rem;
+}
+
+
+/* Gallery & Events (Estilos Genéricos) */
 .section-title { text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--accent); }
 
 .gallery-grid {
@@ -147,7 +199,6 @@ ul { list-style: none; }
 
 .gallery-item img:hover { transform: scale(1.03); }
 
-/* Events */
 .events-list {
     display: flex;
     flex-wrap: wrap;
@@ -156,7 +207,7 @@ ul { list-style: none; }
 }
 
 .event-card {
-    background: var(--dark-grey);
+    background: var(--dark);
     padding: 20px;
     display: flex;
     align-items: center;
@@ -168,13 +219,13 @@ ul { list-style: none; }
 
 .date {
     text-align: center;
-    background: var(--dark);
+    background: var(--dark-grey);
     padding: 10px;
     border-radius: 4px;
     min-width: 60px;
 }
 
-.date .day { display: block; font-size: 1.5rem; font-weight: bold; color: var(--white); }
+.date .day { display: block; font-size: 1.5rem; font-weight: bold; color: var(--light); }
 .date .month { display: block; font-size: 0.8rem; color: var(--primary); }
 
 /* Contact */
@@ -195,6 +246,11 @@ form input, form textarea {
 }
 
 form button { width: 100%; }
+
+.contact-info {
+    padding-left: 20px;
+    border-left: 2px solid var(--primary);
+}
 
 .info-item {
     display: flex;
@@ -265,6 +321,8 @@ footer {
     padding: 10px;
     overflow-y: auto;
     font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .bot-message { background: #333; padding: 8px; border-radius: 8px; margin-bottom: 8px; align-self: flex-start; max-width: 80%; }
@@ -307,7 +365,13 @@ footer {
         padding: 20px;
     }
     #nav-links.active { display: flex; }
-    .about-grid, .contact-grid { grid-template-columns: 1fr; }
+    .about-grid, .contact-grid { 
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .about-image { order: 1; }
+    .about-text { order: 2; }
     .hero-content h1 { font-size: 2.5rem; }
     #chatbot-container { width: 90%; right: 5%; bottom: 80px; }
+    .contact-info { padding-left: 0; border-left: none; }
 }
