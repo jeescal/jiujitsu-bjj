@@ -14,15 +14,22 @@ const translations = {
                         <p>Nuestras raíces vienen de Chile, donde Francisco Bugueño, nuestro instructor principal, fundó el Club Cinesis. Francisco es Cinturón Negro en Jiujitsu Brasileño con más de 25 años de experiencia en el tatami. Hoy, en tierras canadienses, une fuerzas con Juan Escalona, Cinturón Negro en Aikido con 15 años de trayectoria, para dar vida al Club de Jiujitsu Kinesis.</p>
                         <p>Nuestra misión es clara: queremos que el deporte sea accesible para todos en Winnipeg. Creemos que el Jiujitsu es una herramienta de crecimiento personal que debe estar al alcance de cualquier persona.</p>
                         <p>Actualmente, tenemos el honor de entrenar en las instalaciones de la Asociación Chilena de Manitoba, quienes nos han abierto sus puertas para seguir cultivando y expandiendo esta noble disciplina.</p>`,
+        schedule_title: "Horarios",
+        schedule_box_heading: "Horario Semanal de Clases",
+        day_tuesday: "Martes:",
+        day_thursday: "Jueves:",
+        schedule_soon: "**Próximamente:** Sábados en la mañana",
+        schedule_cta_text: "¿Listo para empezar tu viaje en el BJJ?",
+        schedule_cta_btn: "¡Reserva tu Clase de Prueba Gratuita!",
         gallery_title: "Galería",
         events_title: "Próximos Eventos",
         event1_title: "Seminario de Apertura",
         event1_desc: "Clase especial con todos los alumnos.",
         contact_title: "Contáctanos",
         contact_btn: "Enviar Mensaje",
-        chat_welcome: "¡Oss! ¿En qué puedo ayudarte? Pregunta por técnicas o horarios.",
+        chat_welcome: "¡Oss! ¿En qué puedo ayudarte? Pregunta por técnicas, horarios o ubicación.",
         chat_placeholder: "Escribe aquí...",
-        chat_unknown: "Lo siento, no entiendo esa técnica aún. Intenta preguntar sobre 'guardia', 'montada' o 'horarios'."
+        chat_unknown: "Lo siento, no entiendo esa pregunta. Intenta preguntar sobre 'guardia', 'montada', 'horarios' o 'ubicación'."
     },
     en: {
         nav_home: "Home",
@@ -38,15 +45,22 @@ const translations = {
                         <p>Our roots come from Chile, where Francisco Bugueño, our head instructor, founded Club Cinesis. Francisco is a Black Belt in Brazilian Jiujitsu with over 25 years of experience on the mats. Today, in Canadian lands, he joins forces with Juan Escalona, Aikido Black Belt with 15 years of experience, to bring Kinesis Jiujitsu Club to life.</p>
                         <p>Our mission is clear: we want sports to be accessible to everyone in Winnipeg. We believe Jiujitsu is a tool for personal growth that should be within anyone's reach.</p>
                         <p>We currently have the honor of training at the Manitoba Chilean Association facilities, who have kindly opened their doors for us to continue cultivating and expanding this noble discipline.</p>`,
+        schedule_title: "Schedule",
+        schedule_box_heading: "Weekly Class Schedule",
+        day_tuesday: "Tuesday:",
+        day_thursday: "Thursday:",
+        schedule_soon: "**Coming Soon:** Saturday mornings",
+        schedule_cta_text: "Ready to start your BJJ journey?",
+        schedule_cta_btn: "Book Your Free Trial Class!",
         gallery_title: "Gallery",
         events_title: "Upcoming Events",
         event1_title: "Opening Seminar",
         event1_desc: "Special class with all students.",
         contact_title: "Contact Us",
         contact_btn: "Send Message",
-        chat_welcome: "Oss! How can I help you? Ask about techniques or schedule.",
+        chat_welcome: "Oss! How can I help you? Ask about techniques, schedule, or location.",
         chat_placeholder: "Type here...",
-        chat_unknown: "Sorry, I don't know that yet. Try asking about 'guard', 'mount' or 'schedule'."
+        chat_unknown: "Sorry, I don't understand that question. Try asking about 'guard', 'mount', 'schedule', or 'location'."
     },
     fr: {
         nav_home: "Accueil",
@@ -62,15 +76,22 @@ const translations = {
                         <p>Nos racines viennent du Chili, où Francisco Bugueño, notre instructeur principal, a fondé le Club Cinesis. Francisco est Ceinture Noire de Jiujitsu Brésilien avec plus de 25 ans d'expérience sur le tatami. Aujourd'hui, sur les terres canadiennes, il s'associe à Juan Escalona, Ceinture Noire d'Aïkido avec 15 ans d'expérience, pour donner vie au Club de Jiujitsu Kinesis.</p>
                         <p>Notre mission est claire : nous voulons que le sport soit accessible à tous à Winnipeg. Nous croyons que le Jiujitsu est un outil de développement personnel qui devrait être à la portée de tous.</p>
                         <p>Actuellement, nous avons l'honneur de nous entraîner dans les installations de l'Association Chilienne du Manitoba, qui nous ont ouvert leurs portes pour continuer à cultiver et développer cette noble discipline.</p>`,
+        schedule_title: "Horaires",
+        schedule_box_heading: "Horaire Hebdomadaire de Cours",
+        day_tuesday: "Mardi:",
+        day_thursday: "Jeudi:",
+        schedule_soon: "**Bientôt:** Samedis matin",
+        schedule_cta_text: "Prêt à commencer votre parcours BJJ?",
+        schedule_cta_btn: "Réservez Votre Cours d'Essai Gratuit!",
         gallery_title: "Galerie",
         events_title: "Événements à Venir",
         event1_title: "Séminaire d'Ouverture",
         event1_desc: "Cours spécial avec tous les élèves.",
         contact_title: "Contactez-nous",
         contact_btn: "Envoyer Message",
-        chat_welcome: "Oss! Comment puis-je vous aider ? Demandez des techniques ou l'horaire.",
+        chat_welcome: "Oss! Comment puis-je vous aider? Demandez des techniques, l'horaire ou l'emplacement.",
         chat_placeholder: "Écrivez ici...",
-        chat_unknown: "Désolé, je ne comprends pas. Essayez 'garde', 'montée' ou 'horaire'."
+        chat_unknown: "Désolé, je ne comprends pas. Essayez 'garde', 'montée', 'horaire' ou 'emplacement'."
     },
     pt: {
         nav_home: "Início",
@@ -86,15 +107,22 @@ const translations = {
                         <p>Nossas raízes vêm do Chile, onde Francisco Bugueño, nosso instrutor principal, fundou o Club Cinesis. Francisco é Faixa Preta em Jiujitsu Brasileiro com mais de 25 anos de experiência no tatame. Hoje, em terras canadenses, une forças com Juan Escalona, Faixa Preta em Aikido com 15 anos de trajetória, para dar vida ao Clube de Jiujitsu Kinesis.</p>
                         <p>Nossa missão é clara: queremos que o esporte seja acessível para todos em Winnipeg. Acreditamos que o Jiujitsu é uma ferramenta de crescimento pessoal que deve estar ao alcance de qualquer pessoa.</p>
                         <p>Atualmente, temos a honra de treinar nas instalações da Associação Chilena de Manitoba, que gentilmente nos abriram suas portas para continuar cultivando e expandindo essa nobre disciplina.</p>`,
+        schedule_title: "Horários",
+        schedule_box_heading: "Horário Semanal de Aulas",
+        day_tuesday: "Terça-feira:",
+        day_thursday: "Quinta-feira:",
+        schedule_soon: "**Em Breve:** Sábados de manhã",
+        schedule_cta_text: "Pronto para começar sua jornada no BJJ?",
+        schedule_cta_btn: "Agende Sua Aula Experimental Gratuita!",
         gallery_title: "Galeria",
         events_title: "Próximos Eventos",
         event1_title: "Seminário de Abertura",
         event1_desc: "Aula especial com todos os alunos.",
         contact_title: "Contate-nos",
         contact_btn: "Enviar Mensagem",
-        chat_welcome: "Oss! Como posso ajudar? Pergunte sobre técnicas ou horários.",
+        chat_welcome: "Oss! Como posso ajudar? Pergunte sobre técnicas, horários ou localização.",
         chat_placeholder: "Digite aqui...",
-        chat_unknown: "Desculpe, não entendi. Tente perguntar sobre 'guarda', 'montada' ou 'horários'."
+        chat_unknown: "Desculpe, não entendi. Tente perguntar sobre 'guarda', 'montada', 'horários' ou 'localização'."
     }
 };
 
@@ -107,7 +135,7 @@ function changeLanguage(lang) {
     
     elements.forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang][key]) {
+        if (translations[lang] && translations[lang][key]) {
             if (key === 'about_content') {
                 el.innerHTML = translations[lang][key];
             } else {
@@ -116,12 +144,18 @@ function changeLanguage(lang) {
         }
     });
 
-    // Actualizar placeholders
-    document.getElementById('user-input').placeholder = translations[lang].chat_placeholder;
+    // Actualizar placeholders y chatbot
+    const placeholderText = translations[lang].chat_placeholder;
+    if (placeholderText) {
+        const userInput = document.getElementById('user-input');
+        if (userInput) userInput.placeholder = placeholderText;
+    }
     
-    // Resetear Chat
+    // Resetear Chat y mensaje de bienvenida
     const chatBody = document.getElementById('chatbot-body');
-    chatBody.innerHTML = `<div class="bot-message">${translations[lang].chat_welcome}</div>`;
+    if (chatBody) {
+        chatBody.innerHTML = `<div class="bot-message" data-i18n="chat_welcome">${translations[lang].chat_welcome}</div>`;
+    }
 }
 
 // Event Listeners
@@ -139,36 +173,43 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.classList.toggle('active');
     });
 
-    // Iniciar en español
-    changeLanguage('es');
+    // Iniciar en español por defecto o por localStorage
+    const savedLang = localStorage.getItem('kinesis_lang') || 'es';
+    langSelect.value = savedLang;
+    changeLanguage(savedLang);
+    langSelect.addEventListener('change', (e) => {
+        const newLang = e.target.value;
+        localStorage.setItem('kinesis_lang', newLang);
+        changeLanguage(newLang);
+    });
 });
 
 /* === CHATBOT LOGIC === */
-// Base de conocimiento simple
+// Base de conocimiento simple para BJJ y preguntas del club
 const bjjKnowledge = {
     guard: {
-        es: "La Guardia: Posición defensiva y ofensiva donde estás de espalda pero controlas al oponente con las piernas.",
-        en: "The Guard: Defensive and offensive position where you are on your back but control the opponent with your legs.",
-        fr: "La Garde : Position défensive et offensive sur le dos, contrôlant l'adversaire avec les jambes.",
-        pt: "A Guarda: Posição defensiva e ofensiva onde você está de costas, mas controla o oponente com as pernas."
+        es: "La Guardia: Posición defensiva y ofensiva donde estás de espalda pero controlas al oponente con las piernas. Es la base del BJJ.",
+        en: "The Guard: Defensive and offensive position where you are on your back but control the opponent with your legs. It's the foundation of BJJ.",
+        fr: "La Garde : Position défensive et offensive sur le dos, contrôlant l'adversaire avec les jambes. C'est la base du BJJ.",
+        pt: "A Guarda: Posição defensiva e ofensiva onde você está de costas, mas controla o oponente com as pernas. É a base do BJJ."
     },
     mount: {
-        es: "La Montada: Posición dominante donde te sientas sobre el torso del oponente.",
-        en: "The Mount: Dominant position where you sit on the opponent's torso.",
-        fr: "La Montée : Position dominante où vous êtes assis sur le torse de l'adversaire.",
-        pt: "A Montada: Posição dominante onde você senta no tronco do oponente."
+        es: "La Montada: Posición dominante donde te sientas sobre el torso del oponente, excelente para ataques y control.",
+        en: "The Mount: Dominant position where you sit on the opponent's torso, excellent for attacks and control.",
+        fr: "La Montée : Position dominante où vous êtes assis sur le torse de l'adversaire, excellente pour les attaques et le contrôle.",
+        pt: "A Montada: Posição dominante onde você senta no tronco do oponente, excelente para ataques e controle."
     },
-    back: {
-        es: "Espalda: La posición más dominante, controlando al oponente desde atrás.",
-        en: "Back Control: The most dominant position, controlling the opponent from behind.",
-        fr: "Dos : La position la plus dominante, contrôlant l'adversaire par derrière.",
-        pt: "Pegada de Costas: A posição mais dominante, controlando o oponente por trás."
+    schedule: {
+        es: "Nuestro horario es: Martes y Jueves de 18:00 a 19:30. ¡Pronto abriremos clases los sábados!",
+        en: "Our schedule is: Tuesdays and Thursdays from 6:00 PM to 7:30 PM. We will open Saturday classes soon!",
+        fr: "Notre horaire est : Mardis et Jeudis de 18h00 à 19h30. Nous ouvrirons bientôt des cours le samedi !",
+        pt: "Nosso horário é: Terças e Quintas-feiras das 18:00 às 19:30. Em breve teremos aulas aos sábados!"
     },
     location: {
-        es: "Estamos en Manitoba Chilean Association, 1761 Main St.",
-        en: "We are located at Manitoba Chilean Association, 1761 Main St.",
-        fr: "Nous sommes à la Manitoba Chilean Association, 1761 Main St.",
-        pt: "Estamos na Associação Chilena de Manitoba, 1761 Main St."
+        es: "Entrenamos en: Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. ¡Te esperamos!",
+        en: "We train at: Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. We are waiting for you!",
+        fr: "Nous nous entraînons à : Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. Nous vous attendons !",
+        pt: "Treinamos em: Associação Chilena de Manitoba, 1761 Main St, Winnipeg, MB R2V 1Z8. Estamos esperando por você!"
     }
 };
 
@@ -195,7 +236,7 @@ function handleChat() {
     addMessage(userInput.value, 'user-message');
     userInput.value = '';
 
-    // Lógica simple de respuesta
+    // Lógica simple de respuesta con keywords
     setTimeout(() => {
         let response = translations[currentLang].chat_unknown;
 
@@ -203,9 +244,9 @@ function handleChat() {
             response = bjjKnowledge.guard[currentLang];
         } else if (text.includes('mount') || text.includes('montada') || text.includes('montée')) {
             response = bjjKnowledge.mount[currentLang];
-        } else if (text.includes('back') || text.includes('espalda') || text.includes('dos') || text.includes('costas')) {
-            response = bjjKnowledge.back[currentLang];
-        } else if (text.includes('donde') || text.includes('where') || text.includes('ou') || text.includes('location')) {
+        } else if (text.includes('schedule') || text.includes('horario') || text.includes('horaire') || text.includes('horários')) {
+            response = bjjKnowledge.schedule[currentLang];
+        } else if (text.includes('location') || text.includes('ubicación') || text.includes('emplacement') || text.includes('localização')) {
             response = bjjKnowledge.location[currentLang];
         }
 
