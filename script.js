@@ -90,7 +90,7 @@ const translations = {
         contact_title: "Contactez-nous",
         contact_btn: "Envoyer Message",
         chat_welcome: "Oss! Comment puis-je vous aider? Demandez des techniques, l'horaire ou l'emplacement.",
-        chat_placeholder: "Écrivez ici...",
+        chat_placeholder: "Écrivez aquí...",
         chat_unknown: "Désolé, je ne comprends pas. Essayez 'garde', 'montée', 'horaire' ou 'emplacement'."
     },
     pt: {
@@ -103,10 +103,10 @@ const translations = {
         hero_subtitle: "Disciplina, Respeito e Comunidade",
         hero_cta: "Junte-se a Nós",
         about_title: "De Pais a Mestres: Nossa História",
-        about_content: `<p>A Kinesis nasceu de algo muito simples e poderoso: o desejo de um grupo de amigos de transmitir o amor pelas artes marciais aos seus filhos. O que começou como um projeto familiar para ensinar Rodrigo (praticante de Jiujitsu desde os 7 anos) e Salvador (praticante de Aikido desde os 6 anos), logo se transformou em um sonho maior: compartilhar essa paixão com toda a comunidade de Winnipeg.</p>
+        about_content: `<p>A Kinesis nasceu de algo muito simples e poderoso: o desejo de um grupo de amigos de transmitir o amor pelas artes marciais aos seus filhos. O que começou como um projeto familiar para ensinar Rodrigo (praticante de Jiujitsu desde os 7 anos) e Salvador (practicante de Aikido desde os 6 anos), logo se transformou em um sonho maior: compartilhar essa paixão com toda a comunidade de Winnipeg.</p>
                         <p>Nossas raízes vêm do Chile, onde Francisco Bugueño, nosso instrutor principal, fundou o Club Cinesis. Francisco é Faixa Preta em Jiujitsu Brasileiro com mais de 25 anos de experiência no tatame. Hoje, em terras canadenses, une forças com Juan Escalona, Faixa Preta em Aikido com 15 anos de trajetória, para dar vida ao Clube de Jiujitsu Kinesis.</p>
-                        <p>Nossa missão é clara: queremos que o esporte seja acessível para todos em Winnipeg. Acreditamos que o Jiujitsu é uma ferramenta de crescimento pessoal que deve estar ao alcance de qualquer pessoa.</p>
-                        <p>Atualmente, temos a honra de treinar nas instalações da Associação Chilena de Manitoba, que gentilmente nos abriram suas portas para continuar cultivando e expandindo essa nobre disciplina.</p>`,
+                        <p>Nossa missão é clara: queremos que o esporte seja acessível para todos em Winnipeg. Acreditamos que o Jiujitsu é uma ferramenta de crescimento personal que deve estar ao alcance de qualquer pessoa.</p>
+                        <p>Atualmente, temos a honra de treinar nas instalações da Associação Chilena de Manitoba, que gentilmente nos abriram suas portas para continuar cultivando e expandindo esta noble disciplina.</p>`,
         schedule_title: "Horários",
         schedule_box_heading: "Horário Semanal de Aulas",
         day_tuesday: "Terça-feira:",
@@ -121,7 +121,7 @@ const translations = {
         contact_title: "Contate-nos",
         contact_btn: "Enviar Mensagem",
         chat_welcome: "Oss! Como posso ajudar? Pergunte sobre técnicas, horários ou localização.",
-        chat_placeholder: "Digite aqui...",
+        chat_placeholder: "Digite aquí...",
         chat_unknown: "Desculpe, não entendi. Tente perguntar sobre 'guarda', 'montada', 'horários' ou 'localização'."
     }
 };
@@ -182,36 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('kinesis_lang', newLang);
         changeLanguage(newLang);
     });
+    
+    // INICIA LA CARGA DE LA BASE DE CONOCIMIENTO
+    loadKnowledgeBase();
 });
 
-/* === CHATBOT LOGIC === */
-// Base de conocimiento simple para BJJ y preguntas del club
-const bjjKnowledge = {
-    guard: {
-        es: "La Guardia: Posición defensiva y ofensiva donde estás de espalda pero controlas al oponente con las piernas. Es la base del BJJ.",
-        en: "The Guard: Defensive and offensive position where you are on your back but control the opponent with your legs. It's the foundation of BJJ.",
-        fr: "La Garde : Position défensive et offensive sur le dos, contrôlant l'adversaire avec les jambes. C'est la base du BJJ.",
-        pt: "A Guarda: Posição defensiva e ofensiva onde você está de costas, mas controla o oponente com as pernas. É a base do BJJ."
-    },
-    mount: {
-        es: "La Montada: Posición dominante donde te sientas sobre el torso del oponente, excelente para ataques y control.",
-        en: "The Mount: Dominant position where you sit on the opponent's torso, excellent for attacks and control.",
-        fr: "La Montée : Position dominante où vous êtes assis sur le torse de l'adversaire, excellente pour les attaques et le contrôle.",
-        pt: "A Montada: Posição dominante onde você senta no tronco do oponente, excelente para ataques e controle."
-    },
-    schedule: {
-        es: "Nuestro horario es: Martes y Jueves de 18:00 a 19:30. ¡Pronto abriremos clases los sábados!",
-        en: "Our schedule is: Tuesdays and Thursdays from 6:00 PM to 7:30 PM. We will open Saturday classes soon!",
-        fr: "Notre horaire est : Mardis et Jeudis de 18h00 à 19h30. Nous ouvrirons bientôt des cours le samedi !",
-        pt: "Nosso horário é: Terças e Quintas-feiras das 18:00 às 19:30. Em breve teremos aulas aos sábados!"
-    },
-    location: {
-        es: "Entrenamos en: Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. ¡Te esperamos!",
-        en: "We train at: Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. We are waiting for you!",
-        fr: "Nous nous entraînons à : Manitoba Chilean Association, 1761 Main St, Winnipeg, MB R2V 1Z8. Nous vous attendons !",
-        pt: "Treinamos em: Associação Chilena de Manitoba, 1761 Main St, Winnipeg, MB R2V 1Z8. Estamos esperando por você!"
+/* === CHATBOT LOGIC (CARGA ASÍNCRONA DE BASE DE CONOCIMIENTO) === */
+let bjjKnowledge = {};
+
+// Función para cargar la base de conocimiento desde el archivo JSON
+async function loadKnowledgeBase() {
+    try {
+        // La ruta asume que el archivo knowledge.json está en una carpeta 'data' en la raíz
+        const response = await fetch('data/knowledge.json'); 
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        bjjKnowledge = await response.json();
+        console.log('Base de conocimiento del Chatbot cargada con éxito.');
+    } catch (error) {
+        console.error('Error al cargar la base de conocimiento JSON. Usando base vacía:', error);
+        // En caso de fallo de carga, se mantiene bjjKnowledge como objeto vacío.
+        bjjKnowledge = {}; 
+        
+        // **IMPORTANTE:** Si no has creado el archivo `data/knowledge.json` y la carpeta `data`,
+        // el chatbot funcionará, pero no podrá responder preguntas sobre técnicas/horarios.
     }
-};
+}
 
 const chatToggle = document.getElementById('chatbot-toggle');
 const chatContainer = document.getElementById('chatbot-container');
@@ -239,15 +236,21 @@ function handleChat() {
     // Lógica simple de respuesta con keywords
     setTimeout(() => {
         let response = translations[currentLang].chat_unknown;
+        let knowledgeKey = null;
 
         if (text.includes('guard') || text.includes('guardia') || text.includes('garde') || text.includes('guarda')) {
-            response = bjjKnowledge.guard[currentLang];
+            knowledgeKey = 'guard';
         } else if (text.includes('mount') || text.includes('montada') || text.includes('montée')) {
-            response = bjjKnowledge.mount[currentLang];
+            knowledgeKey = 'mount';
         } else if (text.includes('schedule') || text.includes('horario') || text.includes('horaire') || text.includes('horários')) {
-            response = bjjKnowledge.schedule[currentLang];
+            knowledgeKey = 'schedule';
         } else if (text.includes('location') || text.includes('ubicación') || text.includes('emplacement') || text.includes('localização')) {
-            response = bjjKnowledge.location[currentLang];
+            knowledgeKey = 'location';
+        }
+        
+        // Intenta obtener la respuesta de la base de conocimiento cargada
+        if (knowledgeKey && bjjKnowledge[knowledgeKey] && bjjKnowledge[knowledgeKey][currentLang]) {
+            response = bjjKnowledge[knowledgeKey][currentLang];
         }
 
         addMessage(response, 'bot-message');
