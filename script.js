@@ -238,17 +238,83 @@ function handleChat() {
         let response = translations[currentLang].chat_unknown;
         let knowledgeKey = null;
 
-        if (text.includes('guard') || text.includes('guardia') || text.includes('garde') || text.includes('guarda')) {
-            knowledgeKey = 'guard';
-        } else if (text.includes('mount') || text.includes('montada') || text.includes('montée')) {
-            knowledgeKey = 'mount';
-        } else if (text.includes('schedule') || text.includes('horario') || text.includes('horaire') || text.includes('horários')) {
-            knowledgeKey = 'schedule';
-        } else if (text.includes('location') || text.includes('ubicación') || text.includes('emplacement') || text.includes('localização')) {
-            knowledgeKey = 'location';
+        // 1. Definición de palabras clave y su mapeo a la clave JSON
+        // Esto permite que el bot entienda múltiples formas de preguntar por una técnica
+        const keywordMap = {
+            // Técnicas
+            'guard': 'guard',
+            'guardia': 'guard',
+            'garde': 'guard',
+            'guarda': 'guard',
+            'closed guard': 'closed_guard',
+            'guardia cerrada': 'closed_guard',
+            'garde fermée': 'closed_guard',
+            'guarda fechada': 'closed_guard',
+            'half guard': 'half_guard',
+            'media guardia': 'half_guard',
+            'demi garde': 'half_guard',
+            'meia guarda': 'half_guard',
+            'butterfly': 'butterfly_guard',
+            'mariposa': 'butterfly_guard',
+            'papillon': 'butterfly_guard',
+            'guard pass': 'guard_pass',
+            'pasaje de guardia': 'guard_pass',
+            'passage de garde': 'guard_pass',
+            'passagem de guarda': 'guard_pass',
+            'sweep': 'sweep',
+            'raspado': 'sweep',
+            'barrido': 'sweep',
+            'balayage': 'sweep',
+            'raspagem': 'sweep',
+            'mount': 'mount',
+            'montada': 'mount',
+            'montée': 'mount',
+            'side control': 'side_control',
+            'control lateral': 'side_control',
+            'controle lateral': 'side_control',
+            'back control': 'back_control',
+            'control de espalda': 'back_control',
+            'controle do dos': 'back_control',
+            'rnc': 'rear_naked_choke',
+            'mata leon': 'rear_naked_choke',
+            'mata-leon': 'rear_naked_choke',
+            'rear naked choke': 'rear_naked_choke',
+            'triangle': 'triangle_choke',
+            'triangulo': 'triangle_choke',
+            'armbar': 'armbar',
+            'palanca de brazo': 'armbar',
+            'chave de braço': 'armbar',
+            'kimura': 'kimura',
+            'americana': 'americana',
+            'omoplata': 'omoplata',
+            'omoplates': 'omoplata',
+            'takedown': 'takedown',
+            'derribo': 'takedown',
+            'queda': 'takedown',
+
+            // Información del Club
+            'schedule': 'schedule',
+            'horario': 'schedule',
+            'horaire': 'schedule',
+            'horários': 'schedule',
+            'location': 'location',
+            'ubicación': 'location',
+            'emplacement': 'location',
+            'localização': 'location'
+        };
+
+        // 2. Busca la palabra clave más larga en la entrada del usuario
+        // Busca de las frases más largas a las más cortas para evitar que "guard" se active antes que "closed guard".
+        const sortedKeywords = Object.keys(keywordMap).sort((a, b) => b.length - a.length);
+
+        for (const keyword of sortedKeywords) {
+            if (text.includes(keyword)) {
+                knowledgeKey = keywordMap[keyword];
+                break; 
+            }
         }
         
-        // Intenta obtener la respuesta de la base de conocimiento cargada
+        // 3. Intenta obtener la respuesta de la base de conocimiento cargada
         if (knowledgeKey && bjjKnowledge[knowledgeKey] && bjjKnowledge[knowledgeKey][currentLang]) {
             response = bjjKnowledge[knowledgeKey][currentLang];
         }
@@ -265,3 +331,4 @@ function addMessage(text, className) {
     div.textContent = text;
     chatBody.appendChild(div);
 }
+
