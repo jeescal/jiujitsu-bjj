@@ -29,7 +29,8 @@ const translations = {
         contact_btn: "Enviar Mensaje",
         chat_welcome: "¡Oss! ¿En qué puedo ayudarte? Pregunta por técnicas, horarios o ubicación.",
         chat_placeholder: "Escribe aquí...",
-        chat_unknown: "Lo siento, no entiendo esa pregunta. Intenta preguntar sobre 'guardia', 'montada', 'horarios' o 'ubicación'."
+        chat_unknown: "Lo siento, no entiendo esa pregunta.",
+        chat_suggestion_intro: "Quizás te interese preguntar por: " // NUEVA CLAVE
     },
     en: {
         nav_home: "Home",
@@ -60,7 +61,8 @@ const translations = {
         contact_btn: "Send Message",
         chat_welcome: "Oss! How can I help you? Ask about techniques, schedule, or location.",
         chat_placeholder: "Type here...",
-        chat_unknown: "Sorry, I don't understand that question. Try asking about 'guard', 'mount', 'schedule', or 'location'."
+        chat_unknown: "Sorry, I don't understand that question.",
+        chat_suggestion_intro: "You might be interested in asking about: " // NUEVA CLAVE
     },
     fr: {
         nav_home: "Accueil",
@@ -91,7 +93,8 @@ const translations = {
         contact_btn: "Envoyer Message",
         chat_welcome: "Oss! Comment puis-je vous aider? Demandez des techniques, l'horaire ou l'emplacement.",
         chat_placeholder: "Écrivez aquí...",
-        chat_unknown: "Désolé, je ne comprends pas. Essayez 'garde', 'montée', 'horaire' ou 'emplacement'."
+        chat_unknown: "Désolé, je ne comprends pas.",
+        chat_suggestion_intro: "Peut-être voudriez-vous poser des questions sur : " // NUEVA CLAVE
     },
     pt: {
         nav_home: "Início",
@@ -106,7 +109,7 @@ const translations = {
         about_content: `<p>A Kinesis nasceu de algo muito simples e poderoso: o desejo de um grupo de amigos de transmitir o amor pelas artes marciais aos seus filhos. O que começou como um projeto familiar para ensinar Rodrigo (praticante de Jiujitsu desde os 7 anos) e Salvador (practicante de Aikido desde os 6 anos), logo se transformou em um sonho maior: compartilhar essa paixão com toda a comunidade de Winnipeg.</p>
                         <p>Nossas raízes vêm do Chile, onde Francisco Bugueño, nosso instrutor principal, fundou o Club Cinesis. Francisco é Faixa Preta em Jiujitsu Brasileiro com mais de 25 anos de experiência no tatame. Hoje, em terras canadenses, une forças com Juan Escalona, Faixa Preta em Aikido com 15 anos de trajetória, para dar vida ao Clube de Jiujitsu Kinesis.</p>
                         <p>Nossa missão é clara: queremos que o esporte seja acessível para todos em Winnipeg. Acreditamos que o Jiujitsu é uma ferramenta de crescimento personal que deve estar ao alcance de qualquer pessoa.</p>
-                        <p>Atualmente, temos a honra de treinar nas instalações da Associação Chilena de Manitoba, que gentilmente nos abriram suas portas para continuar cultivando e expandindo esta noble disciplina.</p>`,
+                        <p>Atualmente, temos a honra de treinar nas instalações da Associação Chilena de Manitoba, que gentilmente nos abriram suas portas para continuar cultivando e expandindo esta nobre disciplina.</p>`,
         schedule_title: "Horários",
         schedule_box_heading: "Horário Semanal de Aulas",
         day_tuesday: "Terça-feira:",
@@ -122,7 +125,8 @@ const translations = {
         contact_btn: "Enviar Mensagem",
         chat_welcome: "Oss! Como posso ajudar? Pergunte sobre técnicas, horários ou localização.",
         chat_placeholder: "Digite aquí...",
-        chat_unknown: "Desculpe, não entendi. Tente perguntar sobre 'guarda', 'montada', 'horários' ou 'localização'."
+        chat_unknown: "Desculpe, não entendi.",
+        chat_suggestion_intro: "Talvez você queira perguntar sobre: " // NUEVA CLAVE
     }
 };
 
@@ -193,7 +197,6 @@ let bjjKnowledge = {};
 // Función para cargar la base de conocimiento desde el archivo JSON
 async function loadKnowledgeBase() {
     try {
-        // La ruta asume que el archivo knowledge.json está en una carpeta 'data' en la raíz
         const response = await fetch('data/knowledge.json'); 
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -202,13 +205,29 @@ async function loadKnowledgeBase() {
         console.log('Base de conocimiento del Chatbot cargada con éxito.');
     } catch (error) {
         console.error('Error al cargar la base de conocimiento JSON. Usando base vacía:', error);
-        // En caso de fallo de carga, se mantiene bjjKnowledge como objeto vacío.
         bjjKnowledge = {}; 
-        
-        // **IMPORTANTE:** Si no has creado el archivo `data/knowledge.json` y la carpeta `data`,
-        // el chatbot funcionará, pero no podrá responder preguntas sobre técnicas/horarios.
     }
 }
+
+// NUEVA FUNCIÓN: Genera una lista de sugerencias de técnicas
+function getSuggestions(lang) {
+    const suggestions = [];
+    // Claves que son información de contacto/horario y no técnicas
+    const nonTechniqueKeys = ['schedule', 'location']; 
+
+    // Itera sobre la base de conocimiento cargada
+    for (const key in bjjKnowledge) {
+        // Si la clave no es de la lista de omisiones Y tiene una traducción en el idioma actual
+        if (!nonTechniqueKeys.includes(key) && bjjKnowledge[key][lang]) {
+            // Convierte las claves_con_guion_bajo a Claves Con Espacio (más amigable para sugerencias)
+            const displayKey = key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+            suggestions.push(displayKey);
+        }
+    }
+    // Devuelve las primeras 8 sugerencias unidas por una coma
+    return suggestions.slice(0, 8).join(', ');
+}
+
 
 const chatToggle = document.getElementById('chatbot-toggle');
 const chatContainer = document.getElementById('chatbot-container');
@@ -239,7 +258,6 @@ function handleChat() {
         let knowledgeKey = null;
 
         // 1. Definición de palabras clave y su mapeo a la clave JSON
-        // Esto permite que el bot entienda múltiples formas de preguntar por una técnica
         const keywordMap = {
             // Técnicas
             'guard': 'guard',
@@ -304,7 +322,6 @@ function handleChat() {
         };
 
         // 2. Busca la palabra clave más larga en la entrada del usuario
-        // Busca de las frases más largas a las más cortas para evitar que "guard" se active antes que "closed guard".
         const sortedKeywords = Object.keys(keywordMap).sort((a, b) => b.length - a.length);
 
         for (const keyword of sortedKeywords) {
@@ -317,6 +334,11 @@ function handleChat() {
         // 3. Intenta obtener la respuesta de la base de conocimiento cargada
         if (knowledgeKey && bjjKnowledge[knowledgeKey] && bjjKnowledge[knowledgeKey][currentLang]) {
             response = bjjKnowledge[knowledgeKey][currentLang];
+        } else {
+            // Lógica de SUGERENCIA
+            const suggestionList = getSuggestions(currentLang);
+            // Combina el mensaje de desconocido con la lista de sugerencias
+            response = translations[currentLang].chat_unknown + " " + translations[currentLang].chat_suggestion_intro + suggestionList + ".";
         }
 
         addMessage(response, 'bot-message');
@@ -331,4 +353,3 @@ function addMessage(text, className) {
     div.textContent = text;
     chatBody.appendChild(div);
 }
-
