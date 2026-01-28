@@ -3,182 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinesis BJJ - Winnipeg</title>
-    <meta name="description" content="Kinesis BJJ - Club de Jiujitsu Brasileño en Winnipeg, Manitoba. Liderado por Francisco Bugueño (Cinturón Negro). Clases de BJJ para todas las edades.">
-    <meta name="keywords" content="BJJ Winnipeg, Brazilian Jiu Jitsu Manitoba, Kinesis BJJ, clases de jiujitsu, Francisco Bugueño">
-    
+    <title>Kinesis BJJ - Brazilian Jiu-Jitsu Winnipeg</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <header id="main-header">
-        <div class="container nav-container">
+    <header>
+        <nav class="navbar">
             <div class="logo">
-                <h1>KINESIS <span class="highlight">BJJ</span></h1>
+                <img src="/images/logo.png" alt="Kinesis BJJ Logo" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
             </div>
-            <nav>
-                <ul id="nav-links">
-                    <li><a href="#home" data-i18n="nav_home">Inicio</a></li>
-                    <li><a href="#about" data-i18n="nav_about">Quiénes Somos</a></li>
-                    <li><a href="#schedule" data-i18n="schedule_title">Horarios</a></li>
-                    <li><a href="#gallery" data-i18n="nav_gallery">Galería</a></li>
-                    <li><a href="#events" data-i18n="nav_events">Eventos</a></li>
-                    <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
-                </ul>
-            </nav>
-            <div class="lang-selector">
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" data-i18n="nav_home">Inicio</a></li>
+                <li><a href="#about" data-i18n="nav_about">Historia</a></li>
+                <li><a href="#instructor" data-i18n="nav_instructor">Instructor</a></li>
+                <li><a href="#gallery" data-i18n="nav_gallery">Galería</a></li>
+                <li><a href="#schedule" data-i18n="nav_schedule">Horarios</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contacto</a></li>
+            </ul>
+
+            <div class="header-actions">
                 <select id="language-select">
-                    <option value="es">🇪🇸 Español</option>
-                    <option value="en">🇨🇦 English</option>
-                    <option value="fr">🇫🇷 Français</option>
-                    <option value="pt">🇧🇷 Português</option>
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português</option>
                 </select>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
             </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <section id="home">
-        <div class="hero-overlay">
+    <main>
+        <section id="home" class="hero">
             <div class="hero-content">
                 <h1 data-i18n="hero_title">JIUJITSU BRASILEÑO EN WINNIPEG</h1>
                 <p data-i18n="hero_subtitle">Disciplina, Respeto y Comunidad</p>
                 <a href="#contact" class="btn" data-i18n="hero_cta">Únete a Nosotros</a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="section-padding">
-        <div class="container about-grid">
-            <div class="about-image">
-                <img src="images/flayer.jpg" alt="Kinesis BJJ Team">
+        <section id="about" class="section">
+            <div class="container grid-2">
+                <div class="about-text">
+                    <h2 data-i18n="about_title">De Padres a Maestros: Nuestra Historia</h2>
+                    <div data-i18n="about_content" class="text-block">
+                        </div>
+                </div>
+                <div class="about-image">
+                    <img src="/images/flayer.jpg" alt="Kinesis BJJ Story" class="img-responsive">
+                </div>
             </div>
-            <div class="about-text">
-                <h2 data-i18n="about_title">De Padres a Maestros: Nuestra Historia</h2>
-                <div data-i18n="about_content">
+        </section>
+
+        <section id="instructor" class="section bg-dark">
+            <div class="container grid-2-alt">
+                <div class="instructor-image">
+                    <img src="/images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
+                </div>
+                <div class="instructor-text">
+                    <h2 data-i18n="inst_name">Nuestro Instructor: Francisco Bugueño</h2>
+                    <div data-i18n="inst_bio" class="text-block">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section">
+            <h2 class="text-center" data-i18n="gallery_title">Galería</h2>
+            <div class="carousel-container">
+                <div class="carousel-slide" id="carousel">
+                    <img src="/images/flayer.jpg" alt="Gallery 1">
+                    <img src="/images/fondo_1.jpg" alt="Gallery 2">
+                    <img src="/images/fondo_2.jpg" alt="Gallery 3">
+                    <img src="/images/hero.jpg" alt="Gallery 4">
+                    <img src="/images/rodrigo_gana.jpg" alt="Gallery 5">
+                </div>
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carousel-dots"></div>
+            </div>
+        </section>
+
+        <section id="schedule" class="section">
+            <div class="container">
+                <div class="schedule-box">
+                    <h2 data-i18n="schedule_title">Horarios</h2>
+                    <h3 data-i18n="schedule_box_heading">Horario Semanal de Clases</h3>
+                    <div class="schedule-grid">
+                        <div class="schedule-item">
+                            <span class="day" data-i18n="day_wednesday">Miércoles:</span>
+                            <span class="time">6:00 PM - 7:30 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day" data-i18n="day_thursday">Jueves:</span>
+                            <span class="time">6:00 PM - 7:30 PM</span>
+                        </div>
                     </div>
+                    <p class="soon" data-i18n="schedule_soon">**Próximamente:** Sábados en la mañana</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="schedule" class="section-padding bg-dark">
-        <div class="container">
-            <h2 class="section-title" data-i18n="schedule_title">Horarios</h2>
-            
-            <div class="schedule-box">
-                <h3 data-i18n="schedule_box_heading">Horario Semanal de Clases</h3>
-                <ul class="schedule-list">
-                    <li>
-                        <span class="day" data-i18n="day_tuesday">Martes:</span> 
-                        <span class="time">18:00 - 19:30</span>
-                    </li>
-                    <li>
-                        <span class="day" data-i18n="day_thursday">Jueves:</span> 
-                        <span class="time">18:00 - 19:30</span>
-                    </li>
-                </ul>
-                <p class="coming-soon" data-i18n="schedule_soon">**Próximamente:** Sábados en la mañana</p>
-            </div>
-            
-            <div class="cta-schedule" style="text-align:center; margin-top: 40px;">
-                <p data-i18n="schedule_cta_text" style="color: var(--text-grey); margin-bottom: 20px;">
-                    ¿Listo para empezar tu viaje en el BJJ?
-                </p>
-                <a href="#contact" class="btn" data-i18n="schedule_cta_btn">¡Reserva tu Clase de Prueba Gratuita!</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="section-padding">
-        <div class="container">
-            <h2 class="section-title" data-i18n="gallery_title">Galería</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><img src="images/gallery1.jpg" alt="Training" onerror="this.src='https://via.placeholder.com/400x300?text=BJJ+Training'"></div>
-                <div class="gallery-item"><img src="images/gallery2.jpg" alt="Competition" onerror="this.src='https://via.placeholder.com/400x300?text=Competition'"></div>
-                <div class="gallery-item"><img src="images/gallery3.jpg" alt="Kids Class" onerror="this.src='https://via.placeholder.com/400x300?text=Kids+Class'"></div>
-                <div class="gallery-item"><img src="images/gallery4.jpg" alt="Technique" onerror="this.src='https://via.placeholder.com/400x300?text=Technique'"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="events" class="section-padding bg-dark">
-        <div class="container">
-            <h2 class="section-title" data-i18n="events_title">Próximos Eventos</h2>
-            <div class="events-list">
-                <div class="event-card">
-                    <div class="date">
-                        <span class="day">15</span>
-                        <span class="month">MAY</span>
+        <section id="contact" class="section">
+            <div class="container grid-2">
+                <div class="contact-form-wrapper">
+                    <h2 data-i18n="contact_title">Contáctanos</h2>
+                    <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST" id="contact-form">
+                        <input type="text" name="name" placeholder="Nombre" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="tel" name="phone" placeholder="Teléfono">
+                        <textarea name="message" rows="5" placeholder="Mensaje" required></textarea>
+                        <button type="submit" class="btn btn-full" data-i18n="contact_btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.8687394602937!2d-97.1086113!3d49.9387431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea70da9f92931d%3A0xc3ec5a9829f07a7!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1700000000000" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <div class="details">
-                        <h3 data-i18n="event1_title">Seminario de Apertura</h3>
-                        <p data-i18n="event1_desc">Clase especial con todos los alumnos.</p>
-                    </div>
+                    <p><i class="fas fa-map-marker-alt"></i> Manitoba Chilean Association, 1761 Main St, Winnipeg</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section-padding">
-        <div class="container contact-grid">
-            <div class="contact-form-wrapper">
-                <h2 data-i18n="contact_title">Contáctanos</h2>
-                <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST" id="contactForm">
-                    <input type="hidden" name="_subject" value="Nuevo mensaje web Kinesis BJJ">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="text" name="name" placeholder="Nombre / Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="tel" name="phone" placeholder="Teléfono / Phone">
-                    <textarea name="message" rows="5" placeholder="Mensaje / Message" required></textarea>
-                    <button type="submit" class="btn" data-i18n="contact_btn">Enviar Mensaje</button>
-                </form>
-            </div>
-
-            <div class="contact-info">
-                <div class="info-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Manitoba Chilean Association<br>1761 Main St, Winnipeg, MB R2V 1Z8</p>
-                </div>
-                <div class="info-item">
-                    <i class="fas fa-envelope"></i>
-                    <p>kinesis.bjj@gmail.com</p>
-                </div>
-                
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2551.986795493922!2d-97.12658142340263!3d49.92003887146524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea71060699252d%3A0x8d5c4149e8ff4178!2sManitoba%20Chilean%20Association!5e0!3m2!1sen!2sca!4v1701548000000!5m2!1sen!2sca" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>© 2024 Club Kinesis BJJ Winnipeg. All Rights Reserved.</p>
-            <div class="socials">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-            </div>
-        </div>
-    </footer>
+        </section>
+    </main>
 
     <div id="chatbot-container">
-        <div id="chatbot-header">
-            <span>🥋 Kinesis BJJ Bot</span>
-            <button id="close-chat">-</button>
-        </div>
-        <div id="chatbot-body">
-            <div class="bot-message" data-i18n="chat_welcome">¡Oss! ¿En qué puedo ayudarte hoy? Pregúntame sobre técnicas o el club.</div>
-        </div>
-        <div id="chatbot-input">
-            <input type="text" id="user-input" placeholder="Escribe aquí / Type here...">
-            <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+        <div id="chatbot-toggle"><i class="fas fa-comment-dots"></i></div>
+        <div id="chatbot-box">
+            <div id="chatbot-header">
+                <span>Kinesis Bot</span>
+                <i class="fas fa-times" id="close-chat"></i>
+            </div>
+            <div id="chatbot-body"></div>
+            <div id="chatbot-input">
+                <input type="text" id="user-input" placeholder="...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
-    <button id="chatbot-toggle">💬</button>
+
+    <footer>
+        <div class="container text-center">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2025 Club Kinesis BJJ Winnipeg. All Rights Reserved. Desarrollado por Juan Escalona</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
