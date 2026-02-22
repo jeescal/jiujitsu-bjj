@@ -202,4 +202,85 @@ header {
 }
 
 .prev { left: 15px; }
-.next { right
+.next { right: 15px; }
+
+/* =========================================
+   MAPA Y CONTACTO
+   ========================================= */
+.map-responsive {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--accent);
+}
+
+.map-responsive iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* =========================================
+   RESPONSIVE (Samsung S20 y Laptops)
+   ========================================= */
+@media (max-width: 768px) {
+    .navbar { padding: 5px 0; }
+    
+    .logo img { height: 40px; }
+
+    .grid-2, .grid-2-alt {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+
+    /* Orden para Instructor en móvil */
+    .mobile-order-1 { order: 1; }
+    .mobile-order-2 { order: 2; }
+
+    .hero h1 { font-size: 2.2rem; }
+
+    .nav-links {
+        display: none; /* Se activa con la clase 'active' vía JS */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--accent);
+    }
+    
+    .carousel-slide img {
+        height: 300px;
+    }
+}
+
+footer {
+    padding: 40px 0;
+    border-top: 1px solid #333;
+    text-align: center;
+}
