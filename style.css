@@ -1,16 +1,37 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================= */
 :root {
     --bg-dark: #0b0b0b;
     --bg-light: #1a1a1a;
-    --accent: #d4af37;
+    --accent: #d4af37; /* Dorado Kinesis */
     --text-light: #f4f4f4;
+    --transition: all 0.3s ease;
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; background: var(--bg-dark); color: var(--text-light); overflow-x: hidden; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
-/* HEADER RESPONSIVE */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* =========================================
+   HEADER Y NAVEGACIÓN (Corrección Logo)
+   ========================================= */
 header {
-    background: rgba(0,0,0,0.95);
+    background-color: rgba(0, 0, 0, 0.95);
     padding: 10px 5%;
     position: fixed;
     width: 100%;
@@ -19,60 +40,247 @@ header {
     border-bottom: 1px solid var(--accent);
 }
 
-.navbar { display: flex; justify-content: space-between; align-items: center; }
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
 
-/* IDIOMA VISIBLE */
+/* BLINDAJE DEL LOGO: Aquí evitamos que se vea gigante */
+.logo img {
+    height: 50px; 
+    width: auto;
+    max-width: 180px;
+    object-fit: contain;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+/* SELECTOR DE IDIOMA (Optimizado para S20) */
 #language-select {
     background: var(--accent);
-    color: black;
-    font-weight: bold;
-    padding: 10px;
+    color: #000;
+    border: none;
+    padding: 8px 12px;
     border-radius: 5px;
-    font-size: 16px; /* Evita zoom automático en iPhone/Samsung */
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-/* GRIDS RESPONSIVOS */
-.container { max-width: 1200px; margin: auto; padding: 0 20px; }
-.grid-2, .grid-2-alt { 
-    display: grid; 
-    grid-template-columns: 1fr 1fr; 
-    gap: 30px; 
-    align-items: center; 
+/* =========================================
+   SECCIONES Y GRIDS
+   ========================================= */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
 }
 
-/* IMÁGENES AL 100% */
-.img-responsive { 
-    width: 100%; 
-    height: auto; 
-    border-radius: 10px; 
-    object-fit: cover;
+.section {
+    padding: 100px 0 60px 0;
 }
 
-/* CARRUSEL REHECHO */
+.bg-dark { background-color: var(--bg-light); }
+
+.grid-2, .grid-2-alt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.text-center { text-align: center; }
+
+/* =========================================
+   HERO / INICIO
+   ========================================= */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('/images/hero.jpg') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+}
+
+/* =========================================
+   IMÁGENES Y ELEMENTOS
+   ========================================= */
+.img-responsive {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+}
+
+.border-accent {
+    border: 3px solid var(--accent);
+}
+
+.btn {
+    background-color: var(--accent);
+    color: #000;
+    padding: 12px 30px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    display: inline-block;
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #fff;
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   CARRUSEL (Blindado para Móvil)
+   ========================================= */
 .carousel-container {
     position: relative;
     max-width: 900px;
     margin: auto;
     overflow: hidden;
-    touch-action: pan-y; /* Permite scroll vertical pero captura horizontal */
+    border-radius: 15px;
+    touch-action: pan-y;
 }
-.carousel-slide { display: flex; transition: transform 0.5s ease-out; }
-.carousel-slide img { width: 100%; flex-shrink: 0; }
 
-/* MOBILE ADJUSTMENTS */
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide img {
+    width: 100%;
+    flex-shrink: 0;
+    height: 450px;
+    object-fit: cover;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(212, 175, 55, 0.8);
+    border: none;
+    color: #000;
+    padding: 15px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.prev { left: 15px; }
+.next { right: 15px; }
+
+/* =========================================
+   MAPA Y CONTACTO
+   ========================================= */
+.map-responsive {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--accent);
+}
+
+.map-responsive iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    background: #222;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* =========================================
+   RESPONSIVE (Samsung S20 y Laptops)
+   ========================================= */
 @media (max-width: 768px) {
-    .grid-2, .grid-2-alt { grid-template-columns: 1fr; }
+    .navbar { padding: 5px 0; }
     
-    /* Orden para Instructor: Foto arriba, Texto abajo */
+    .logo img { height: 40px; }
+
+    .grid-2, .grid-2-alt {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        text-align: center;
+    }
+
+    /* Orden para Instructor en móvil */
     .mobile-order-1 { order: 1; }
     .mobile-order-2 { order: 2; }
-    
+
+    .hero h1 { font-size: 2.2rem; }
+
     .nav-links {
-        display: none;
+        display: none; /* Se activa con la clase 'active' vía JS */
         position: absolute;
-        top: 100%; left: 0; width: 100%;
-        background: black; flex-direction: column; padding: 20px;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.95);
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
     }
-    .nav-links.active { display: flex; }
-    .hero h1 { font-size: 2rem; }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--accent);
+    }
+    
+    .carousel-slide img {
+        height: 300px;
+    }
+}
+
+footer {
+    padding: 40px 0;
+    border-top: 1px solid #333;
+    text-align: center;
 }
