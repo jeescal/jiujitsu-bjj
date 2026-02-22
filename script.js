@@ -1,4 +1,3 @@
-/* === CONFIGURACIÓN DE TRADUCCIONES === */
 const translations = {
     en: {
         nav_home: "Home", nav_about: "Story", nav_instructor: "Instructor", nav_gallery: "Gallery", nav_schedule: "Schedule", nav_contact: "Contact",
