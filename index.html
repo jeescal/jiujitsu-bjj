@@ -4,394 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Kinesis BJJ - Winnipeg</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #0a0a0a;
-            --accent: #d4af37; /* Gold/BJJ style */
-            --white: #ffffff;
-            --gray: #f4f4f4;
-            --text: #333;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
-        
-        body { line-height: 1.6; color: var(--text); background: var(--white); overflow-x: hidden; }
-
-        /* --- RESPONSIVE IMAGES --- */
-        img { max-width: 100%; height: auto; display: block; border-radius: 8px; }
-
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            background: var(--primary);
-            color: var(--white);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo { font-weight: bold; font-size: 1.5rem; color: var(--accent); text-decoration: none; }
-
-        /* LANGUAGE SELECTOR - HIGH VISIBILITY FOR MOBILE */
-        .lang-wrapper { display: flex; align-items: center; gap: 10px; }
-        
-        #lang-selector {
-            background: var(--accent);
-            color: var(--primary);
-            border: none;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 16px; /* Optimized for touch */
-            cursor: pointer;
-            outline: none;
-        }
-
-        .nav-menu { display: flex; list-style: none; gap: 20px; }
-        .nav-menu a { color: var(--white); text-decoration: none; font-weight: 500; transition: 0.3s; }
-        .nav-menu a:hover { color: var(--accent); }
-
-        .hamburger { display: none; cursor: pointer; font-size: 1.8rem; color: var(--white); }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/hero.jpg');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--white);
-            margin-top: 60px;
-        }
-
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--accent); }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
-
-        /* Layout Grid */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-
-        /* --- CAROUSEL --- */
-        .carousel-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 15px;
-            touch-action: pan-y;
-        }
-        .carousel-track { display: flex; transition: transform 0.5s ease-in-out; }
-        .slide { min-width: 100%; }
-        .slide img { width: 100%; height: 450px; object-fit: cover; }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 10;
-        }
-        .prev { left: 10px; }
-        .next { right: 10px; }
-
-        /* --- SCHEDULE BOX --- */
-        .schedule-card {
-            background: var(--primary);
-            color: var(--white);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            border-left: 5px solid var(--accent);
-        }
-        .schedule-card h3 { color: var(--accent); margin-bottom: 20px; }
-        .schedule-item { margin-bottom: 10px; font-size: 1.2rem; }
-
-        /* --- CONTACT FORM --- */
-        form { display: flex; flex-direction: column; gap: 15px; }
-        input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 5px; width: 100%; }
-        button[type="submit"] {
-            background: var(--accent);
-            color: var(--primary);
-            font-weight: bold;
-            padding: 15px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        /* --- CHATBOT --- */
-        #chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
-        }
-        #chat-button {
-            background: var(--accent);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        }
-
-        /* --- MOBILE OPTIMIZATION (S20 & Others) --- */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--primary);
-                padding: 20px;
-                text-align: center;
-            }
-            .nav-menu.active { display: flex; }
-            .hamburger { display: block; }
-            .grid-2 { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .slide img { height: 300px; }
-            .section-title { font-size: 1.8rem; }
-            
-            /* Language selector fix for mobile */
-            .lang-wrapper { margin-right: 15px; }
-        }
-
-        footer { background: var(--primary); color: white; text-align: center; padding: 40px 5%; margin-top: 50px; }
-    </style>
 </head>
 <body>
 
-<header>
-    <div class="nav-container">
-        <a href="#" class="logo">KINESIS BJJ</a>
-        
-        <div class="lang-wrapper">
-            <select id="lang-selector" onchange="changeLanguage(this.value)">
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="fr">Français</option>
-                <option value="pt">Português</option>
-            </select>
-        </div>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="/images/logo.png" alt="Kinesis BJJ" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
+            </div>
+            
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#about" data-i18n="nav_about">Story</a></li>
+                <li><a href="#instructor" data-i18n="nav_instructor">Instructor</a></li>
+                <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="#schedule" data-i18n="nav_schedule">Schedule</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+            </ul>
 
-        <ul class="nav-menu" id="nav-menu">
-            <li><a href="#home" data-i18n="nav-home">Home</a></li>
-            <li><a href="#about" data-i18n="nav-about">About</a></li>
-            <li><a href="#instructor" data-i18n="nav-instructor">Instructor</a></li>
-            <li><a href="#schedule" data-i18n="nav-schedule">Schedule</a></li>
-            <li><a href="#contact" data-i18n="nav-contact">Contact</a></li>
-        </ul>
+            <div class="header-actions">
+                <select id="language-select" onchange="updateLanguage(this.value)">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="pt">Português</option>
+                </select>
+                <div class="menu-toggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+            </div>
+        </nav>
+    </header>
 
-        <div class="hamburger" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-    </div>
-</header>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 data-i18n="hero_title">BRAZILIAN JIU-JITSU IN WINNIPEG</h1>
+                <p data-i18n="hero_subtitle">Discipline, Respect and Community</p>
+                <a href="#contact" class="btn" data-i18n="hero_cta">Join Us</a>
+            </div>
+        </section>
 
-<section class="hero" id="home">
-    <div class="hero-content">
-        <h1 data-i18n="hero-title">Kinesis BJJ Winnipeg</h1>
-        <p data-i18n="hero-subtitle">Brazilian Jiu-Jitsu for Everyone</p>
-    </div>
-</section>
+        <section id="about" class="section">
+            <div class="container grid-2">
+                <div class="about-text">
+                    <h2 data-i18n="about_title">From Parents to Masters: Our Story</h2>
+                    <div data-i18n="about_content" class="text-block"></div>
+                </div>
+                <div class="about-image">
+                    <img src="/images/flayer.jpg" alt="Kinesis BJJ Story" class="img-responsive">
+                </div>
+            </div>
+        </section>
 
-<section id="about">
-    <div class="grid-2">
-        <div><img src="/images/flayer.jpg" alt="Kinesis BJJ" loading="lazy"></div>
-        <div>
-            <h2 class="section-title" data-i18n="about-title" style="text-align: left;">From Parents to Masters</h2>
-            <p id="about-text" data-i18n="about-content">
-                Kinesis was born from something very simple and powerful...
-            </p>
-        </div>
-    </div>
-</section>
+        <section id="instructor" class="section bg-dark">
+            <div class="container grid-2-alt">
+                <div class="instructor-image mobile-order-1">
+                    <img src="/images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
+                </div>
+                <div class="instructor-text mobile-order-2">
+                    <h2 data-i18n="inst_name">Our Instructor: Francisco Bugueño</h2>
+                    <div data-i18n="inst_bio" class="text-block"></div>
+                </div>
+            </div>
+        </section>
 
-<section id="instructor" style="background: var(--gray);">
-    <div class="grid-2">
-        <div class="mobile-order-2">
-            <h2 class="section-title" data-i18n="inst-title" style="text-align: left;">Our Instructor</h2>
-            <p data-i18n="inst-content">Francisco Bugueño is a second-degree black belt...</p>
-        </div>
-        <div class="mobile-order-1">
-            <img src="/images/francisco_bugue_3.jpg" alt="Francisco Bugueño">
-        </div>
-    </div>
-</section>
+        <section id="gallery" class="section">
+            <h2 class="text-center" data-i18n="nav_gallery" style="margin-bottom:20px">Gallery</h2>
+            <div class="carousel-container" id="carousel-area">
+                <div class="carousel-slide" id="carousel">
+                    <img src="/images/flayer.jpg" alt="Gallery 1">
+                    <img src="/images/fondo_1.jpg" alt="Gallery 2">
+                    <img src="/images/fondo_2.jpg" alt="Gallery 3">
+                    <img src="/images/hero.jpg" alt="Gallery 4">
+                    <img src="/images/rodrigo_gana.jpg" alt="Gallery 5">
+                </div>
+                <button class="carousel-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
 
-<section id="gallery">
-    <h2 class="section-title" data-i18n="gallery-title">Gallery</h2>
-    <div class="carousel-container" id="carousel">
-        <div class="carousel-track" id="track">
-            <div class="slide"><img src="/images/flayer.jpg" alt="Slide 1"></div>
-            <div class="slide"><img src="/images/fondo_1.jpg" alt="Slide 2"></div>
-            <div class="slide"><img src="/images/fondo_2.jpg" alt="Slide 3"></div>
-            <div class="slide"><img src="/images/hero.jpg" alt="Slide 4"></div>
-            <div class="slide"><img src="/images/rodrigo_gana.jpg" alt="Slide 5"></div>
-        </div>
-        <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-        <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
-    </div>
-</section>
+        <section id="schedule" class="section">
+            <div class="container">
+                <div class="schedule-box">
+                    <h2 data-i18n="nav_schedule">Schedule</h2>
+                    <div class="schedule-grid">
+                        <div class="schedule-item">
+                            <span class="day" data-i18n="day_tuesday">Tuesday:</span>
+                            <span class="time">6:00 PM - 7:30 PM</span>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="day" data-i18n="day_thursday">Thursday:</span>
+                            <span class="time">6:00 PM - 7:30 PM</span>
+                        </div>
+                    </div>
+                    <p class="soon" data-i18n="schedule_soon">Coming Soon: Saturday mornings</p>
+                </div>
+            </div>
+        </section>
 
-<section id="schedule">
-    <h2 class="section-title" data-i18n="sch-title">Schedule</h2>
-    <div class="schedule-card">
-        <div class="schedule-item"><strong data-i18n="tue">Tuesday:</strong> 6:00 PM - 7:30 PM</div>
-        <div class="schedule-item"><strong data-i18n="thu">Thursday:</strong> 6:00 PM - 7:30 PM</div>
-        <div class="schedule-item" style="color: var(--accent); margin-top: 15px;" data-i18n="soon">Coming Soon: Saturday mornings</div>
-    </div>
-</section>
-
-<section id="contact">
-    <h2 class="section-title" data-i18n="contact-title">Contact Us</h2>
-    <div class="grid-2">
-        <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST">
-            <input type="text" name="name" placeholder="Name" required data-i18n-placeholder="name-ph">
-            <input type="email" name="email" placeholder="Email" required data-i18n-placeholder="email-ph">
-            <input type="tel" name="phone" placeholder="Phone" data-i18n-placeholder="phone-ph">
-            <textarea name="message" rows="5" placeholder="Message" required data-i18n-placeholder="msg-ph"></textarea>
-            <button type="submit" data-i18n="send-btn">Send Message</button>
-        </form>
-        <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.89!2d-97.117!3d49.944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea70648c66e76d%3A0x6a0531557007e9b4!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
-        </div>
-    </div>
-</section>
-
-<footer id="footer">
-    <p>&copy; 2025 Club Kinesis BJJ Winnipeg. All Rights Reserved.</p>
-    <p>Developed by Juan Escalona</p>
-</footer>
-
-<div id="chat-widget">
-    <div id="chat-button" onclick="alert('BJJ Assistant: Training starts at 6 PM! How can I help?')">
-        <i class="fas fa-comment-dots" style="color: var(--primary); font-size: 24px;"></i>
-    </div>
-</div>
-
-<script>
-    // --- TRANSLATIONS DATA ---
-    const i18n = {
-        en: {
-            "nav-home": "Home", "nav-about": "About", "nav-instructor": "Instructor", "nav-schedule": "Schedule", "nav-contact": "Contact",
-            "hero-title": "Kinesis BJJ Winnipeg", "hero-subtitle": "From Parents to Masters",
-            "about-title": "From Parents to Masters: Our Story",
-            "about-content": "Kinesis was born from something very simple and powerful: the desire of a group of friends to pass on their love of martial arts to their children. What began as a family project to teach Rodrigo (Jiu-Jitsu practitioner since age 7) and Salvador (Aikido practitioner since age 6), soon transformed into a bigger dream: to share this passion with the entire Winnipeg community...",
-            "inst-title": "Our Instructor: Francisco Bugueño",
-            "inst-content": "Francisco Bugueño is a second-degree black belt in Brazilian Jiu-Jitsu, with over 25 years of experience in the discipline. Trained under the prestigious mentorship of Master Paulo Maurício Strauch...",
-            "gallery-title": "Gallery", "sch-title": "Schedule", "tue": "Tuesday", "thu": "Thursday", "soon": "Coming Soon: Saturday mornings",
-            "contact-title": "Contact Us", "name-ph": "Name", "email-ph": "Email", "phone-ph": "Phone", "msg-ph": "Message", "send-btn": "Send Message"
-        },
-        es: {
-            "nav-home": "Inicio", "nav-about": "Nosotros", "nav-instructor": "Instructor", "nav-schedule": "Horarios", "nav-contact": "Contacto",
-            "hero-title": "Kinesis BJJ Winnipeg", "hero-subtitle": "De Padres a Maestros",
-            "about-title": "De Padres a Maestros: Nuestra Historia",
-            "about-content": "Kinesis nació de algo muy simple y poderoso: el deseo de un grupo de amigos de transmitir el amor por las artes marciales a sus hijos...",
-            "inst-title": "Nuestro Instructor: Francisco Bugueño",
-            "inst-content": "Francisco Bugueño es cinturón negro segundo grado en Jiu-Jitsu Brasileño, con más de 25 años de experiencia...",
-            "gallery-title": "Galería", "sch-title": "Horarios", "tue": "Martes", "thu": "Jueves", "soon": "Próximamente: Sábados en la mañana",
-            "contact-title": "Contáctenos", "name-ph": "Nombre", "email-ph": "Correo", "phone-ph": "Teléfono", "msg-ph": "Mensaje", "send-btn": "Enviar Mensaje"
-        },
-        fr: {
-            "nav-home": "Accueil", "nav-about": "À Propos", "nav-instructor": "Instructeur", "nav-schedule": "Horaires", "nav-contact": "Contact",
-            "hero-title": "Kinesis BJJ Winnipeg", "hero-subtitle": "De Parents à Maîtres",
-            "about-title": "De Parents à Maîtres: Notre Histoire",
-            "about-content": "Kinesis est né de quelque chose de très simple et puissant: le désir d'un groupe d'amis de transmettre leur amour des arts martiaux à leurs enfants...",
-            "inst-title": "Notre Instructeur: Francisco Bugueño",
-            "inst-content": "Francisco Bugueño est ceinture noire deuxième degré en Jiu-Jitsu Brésilien...",
-            "gallery-title": "Galerie", "sch-title": "Horaires", "tue": "Mardi", "thu": "Jeudi", "soon": "Bientôt: Samedis matin",
-            "contact-title": "Contactez-nous", "name-ph": "Nom", "email-ph": "Email", "phone-ph": "Téléphone", "msg-ph": "Message", "send-btn": "Envoyer"
-        },
-        pt: {
-            "nav-home": "Início", "nav-about": "Sobre", "nav-instructor": "Instrutor", "nav-schedule": "Horário", "nav-contact": "Contato",
-            "hero-title": "Kinesis BJJ Winnipeg", "hero-subtitle": "De Pais a Mestres",
-            "about-title": "De Pais a Mestres: Nossa História",
-            "about-content": "Kinesis nasceu de algo muito simples e poderoso: o desejo de um grupo de amigos de transmitir o amor pelas artes marciais aos seus filhos...",
-            "inst-title": "Nosso Instrutor: Francisco Bugueño",
-            "inst-content": "Francisco Bugueño é faixa preta segundo grau em Jiu-Jitsu Brasileiro...",
-            "gallery-title": "Galeria", "sch-title": "Horários", "tue": "Terça-feira", "thu": "Quinta-feira", "soon": "Em breve: Sábados pela manhã",
-            "contact-title": "Contato", "name-ph": "Nome", "email-ph": "E-mail", "phone-ph": "Telefone", "msg-ph": "Mensagem", "send-btn": "Enviar"
-        }
-    };
-
-    function changeLanguage(lang) {
-        localStorage.setItem('preferredLang', lang);
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            el.textContent = i18n[lang][key];
-        });
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-            const key = el.getAttribute('data-i18n-placeholder');
-            el.placeholder = i18n[lang][key];
-        });
-    }
-
-    // --- CAROUSEL LOGIC ---
-    let currentSlide = 0;
-    const track = document.getElementById('track');
-    const slides = document.querySelectorAll('.slide');
-    
-    function moveSlide(direction) {
-        currentSlide = (currentSlide + direction + slides.length) % slides.length;
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-    }
-
-    // Auto-play carousel
-    setInterval(() => moveSlide(1), 5000);
-
-    // Touch Support for Mobile (Swipe)
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const carousel = document.getElementById('carousel');
-
-    carousel.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-    carousel.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 50) moveSlide(1);
-        if (touchEndX - touchStartX > 50) moveSlide(-1);
-    });
-
-    // --- MENU LOGIC ---
-    function toggleMenu() {
-        document.getElementById('nav-menu').classList.toggle('active');
-    }
-
-    // Initialize Language
-    window.onload = () => {
-        const savedLang = localStorage.getItem('preferredLang') || 'en';
-        document.getElementById('lang-selector').value = savedLang;
-        changeLanguage(savedLang);
-    };
-</script>
-
-</body>
-</html>
+        <section id="contact" class="section">
+            <div class="container grid-2">
+                <div class="contact-form-wrapper">
+                    <h2 data-i18n="contact_title">Contact Us</h2>
+                    <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST">
+                        <input type="text" name="name" placeholder="Name" required data-i18n-placeholder="name_ph">
+                        <input type="email" name="email" placeholder="Email" required data-i18n-placeholder="email_ph">
+                        <textarea name="message" rows="5" placeholder="Message" required data-i18n-placeholder="msg_ph"></textarea>
+                        <button type="submit" class="btn btn-full" data-i18n="contact_btn">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="map-responsive">
+                        <iframe src="
