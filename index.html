@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kinesis BJJ - Brazilian Jiu-Jitsu Winnipeg</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img src="/images/logo.png" alt="Kinesis BJJ" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
+                <img src="./images/logo.png" alt="Kinesis BJJ" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
             </div>
             
             <div class="header-controls">
@@ -52,7 +52,7 @@
                     <div data-i18n="about_content" class="text-block"></div>
                 </div>
                 <div class="about-image">
-                    <img src="/images/flayer.jpg" alt="Our Story" class="img-responsive">
+                    <img src="./images/flayer.jpg" alt="Story" class="img-responsive">
                 </div>
             </div>
         </section>
@@ -60,7 +60,7 @@
         <section id="instructor" class="section bg-light">
             <div class="container grid-2-alt">
                 <div class="instructor-image">
-                    <img src="/images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
+                    <img src="./images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
                 </div>
                 <div class="instructor-text">
                     <h2 data-i18n="inst_name">Our Instructor: Francisco Bugueño</h2>
@@ -70,15 +70,15 @@
         </section>
 
         <section id="gallery" class="section">
-            <h2 class="text-center" data-i18n="nav_gallery" style="margin-bottom:20px">Gallery</h2>
+            <h2 class="text-center" data-i18n="nav_gallery">Gallery</h2>
             <div class="carousel-container">
                 <div class="carousel-slide" id="carousel">
-                    <img src="/images/kinesis_20-02-2026.jpeg" alt="Kinesis 2026">
-                    <img src="/images/flayer.jpg" alt="BJJ Winnipeg">
-                    <img src="/images/fondo_1.jpg" alt="Training">
-                    <img src="/images/fondo_2.jpg" alt="Rolling">
-                    <img src="/images/hero.jpg" alt="Kinesis BJJ">
-                    <img src="/images/rodrigo_gana.jpg" alt="Success">
+                    <img src="./images/kinesis_20-02-2026.jpeg" alt="Class">
+                    <img src="./images/flayer.jpg" alt="Flayer">
+                    <img src="./images/fondo_1.jpg" alt="Gym">
+                    <img src="./images/fondo_2.jpg" alt="Training">
+                    <img src="./images/hero.jpg" alt="BJJ">
+                    <img src="./images/rodrigo_gana.jpg" alt="Champion">
                 </div>
                 <button class="carousel-btn prev">❮</button>
                 <button class="carousel-btn next">❯</button>
@@ -89,7 +89,7 @@
             <div class="container">
                 <div class="schedule-card">
                     <h2 data-i18n="nav_schedule">Schedule</h2>
-                    <div id="schedule-content" class="text-block"></div>
+                    <div id="schedule-content" data-i18n="schedule_content" class="text-block"></div>
                 </div>
             </div>
         </section>
@@ -107,23 +107,11 @@
                     </form>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m12!1m3!1d2567.576822536854!2d-97.1147447!3d49.944359!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42ea5f79a9557a6d%3A0x600c0f913d944e8c!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1708600000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.842774351052!2d-97.1147589!3d49.9392683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42ea2935216e250d%3A0x6758667c493ec713!2sManitoba%20Chilean%20Association!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
     </main>
-
-    <div id="chatbot-container">
-        <div id="chatbot-toggle"><i class="fas fa-comment"></i></div>
-        <div id="chatbot-box">
-            <div id="chatbot-header"><span data-i18n="bot_name">Kinesis Bot</span></div>
-            <div id="chatbot-body"></div>
-            <div id="chatbot-input">
-                <input type="text" id="user-input" placeholder="...">
-                <button id="send-btn">OK</button>
-            </div>
-        </div>
-    </div>
 
     <footer>
         <p data-i18n="footer_copy">© 2025 Club Kinesis BJJ Winnipeg. All Rights Reserved. Developed by Juan Escalona</p>
