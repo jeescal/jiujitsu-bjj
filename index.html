@@ -48,11 +48,11 @@
         <section id="about" class="section">
             <div class="container grid-2">
                 <div class="about-text">
-                    <h2 data-i18n="about_title">From Parents to Masters: Our Story</h2>
+                    <h2 data-i18n="about_title">Our Story</h2>
                     <div data-i18n="about_content" class="text-block"></div>
                 </div>
                 <div class="about-image">
-                    <img src="./images/flayer.jpg" alt="Story" class="img-responsive">
+                    <img src="./images/flayer.jpg" alt="Kinesis Story" class="img-responsive">
                 </div>
             </div>
         </section>
@@ -63,7 +63,7 @@
                     <img src="./images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
                 </div>
                 <div class="instructor-text">
-                    <h2 data-i18n="inst_name">Our Instructor: Francisco Bugueño</h2>
+                    <h2 data-i18n="inst_name">Instructor</h2>
                     <div data-i18n="inst_bio" class="text-block"></div>
                 </div>
             </div>
@@ -73,15 +73,15 @@
             <h2 class="text-center" data-i18n="nav_gallery">Gallery</h2>
             <div class="carousel-container">
                 <div class="carousel-slide" id="carousel">
-                    <img src="./images/kinesis_20-02-2026.jpeg" alt="Class">
-                    <img src="./images/flayer.jpg" alt="Flayer">
-                    <img src="./images/fondo_1.jpg" alt="Gym">
-                    <img src="./images/fondo_2.jpg" alt="Training">
-                    <img src="./images/hero.jpg" alt="BJJ">
-                    <img src="./images/rodrigo_gana.jpg" alt="Champion">
+                    <img src="./images/kinesis_20-02-2026.jpeg" alt="Training Session">
+                    <img src="./images/flayer.jpg" alt="Club Poster">
+                    <img src="./images/fondo_1.jpg" alt="Gym Atmosphere">
+                    <img src="./images/fondo_2.jpg" alt="Rolling Time">
+                    <img src="./images/hero.jpg" alt="Team Photo">
+                    <img src="./images/rodrigo_gana.jpg" alt="Tournament">
                 </div>
-                <button class="carousel-btn prev">❮</button>
-                <button class="carousel-btn next">❯</button>
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
             </div>
         </section>
 
@@ -97,24 +97,26 @@
         <section id="contact" class="section">
             <div class="container grid-2">
                 <div class="contact-form">
-                    <h2 data-i18n="nav_contact">Contact Us</h2>
+                    <h2 data-i18n="nav_contact">Contact</h2>
                     <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST">
                         <input type="text" name="name" placeholder="Name" required>
                         <input type="email" name="email" placeholder="Email" required>
-                        <input type="tel" name="phone" placeholder="Phone">
-                        <textarea name="message" placeholder="Message" rows="5" required></textarea>
-                        <button type="submit" class="btn btn-full" data-i18n="contact_btn">Send Message</button>
+                        <textarea name="message" placeholder="Message" rows="4" required></textarea>
+                        <button type="submit" class="btn btn-full" data-i18n="contact_btn">Send</button>
                     </form>
                 </div>
                 <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.842774351052!2d-97.1147589!3d49.9392683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42ea2935216e250d%3A0x6758667c493ec713!2sManitoba%20Chilean%20Association!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d2567.89234857!2d-97.1189433!3d49.9388338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42ea29457788448b%3A0x6440618077755c0!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
+                    <p style="margin-top:15px; color:var(--accent); font-weight: bold;">
+                        <i class="fas fa-map-marker-alt"></i> 1761 Main St, Winnipeg, MB R2V 1Z8
+                    </p>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p data-i18n="footer_copy">© 2025 Club Kinesis BJJ Winnipeg. All Rights Reserved. Developed by Juan Escalona</p>
+        <p data-i18n="footer_copy">© 2025 Club Kinesis BJJ Winnipeg. Developed by Juan Escalona</p>
     </footer>
 
     <script src="script.js"></script>
