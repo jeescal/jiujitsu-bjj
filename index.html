@@ -3,28 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kinesis BJJ - Brazilian Jiu-Jitsu Winnipeg</title>
+    <title>Kinesis BJJ - Winnipeg</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <header>
         <nav class="navbar">
             <div class="logo">
-                <img src="./images/logo.png" alt="Kinesis BJJ" class="logo-img" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
+                <img src="images/logo.png" alt="Kinesis BJJ" onerror="this.src='https://via.placeholder.com/150x50?text=KINESIS+BJJ'">
             </div>
-            
-            <div class="header-controls">
-                <select id="language-select" class="language-selector">
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="pt">Português</option>
-                </select>
-                <div class="menu-toggle" id="mobile-menu-btn"><i class="fas fa-bars"></i></div>
-            </div>
-
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home" data-i18n="nav_home">Home</a></li>
                 <li><a href="#about" data-i18n="nav_about">Our Story</a></li>
@@ -33,6 +21,13 @@
                 <li><a href="#schedule" data-i18n="nav_schedule">Schedule</a></li>
                 <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             </ul>
+            <div class="header-actions">
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+                <div class="menu-toggle" id="mobile-btn"><i class="fas fa-bars"></i></div>
+            </div>
         </nav>
     </header>
 
@@ -52,65 +47,41 @@
                     <div data-i18n="about_content" class="text-block"></div>
                 </div>
                 <div class="about-image">
-                    <img src="./images/flayer.jpg" alt="Kinesis Story" class="img-responsive">
+                    <img src="images/flayer.jpg" alt="Story" class="img-responsive">
                 </div>
             </div>
         </section>
 
-        <section id="instructor" class="section bg-light">
-            <div class="container grid-2-alt">
-                <div class="instructor-image">
-                    <img src="./images/francisco_bugue_3.jpg" alt="Francisco Bugueño" class="img-responsive border-accent">
-                </div>
-                <div class="instructor-text">
-                    <h2 data-i18n="inst_name">Instructor</h2>
-                    <div data-i18n="inst_bio" class="text-block"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="gallery" class="section">
+        <section id="gallery" class="section bg-dark">
             <h2 class="text-center" data-i18n="nav_gallery">Gallery</h2>
             <div class="carousel-container">
-                <div class="carousel-slide" id="carousel">
-                    <img src="./images/kinesis_20-02-2026.jpeg" alt="Training Session">
-                    <img src="./images/flayer.jpg" alt="Club Poster">
-                    <img src="./images/fondo_1.jpg" alt="Gym Atmosphere">
-                    <img src="./images/fondo_2.jpg" alt="Rolling Time">
-                    <img src="./images/hero.jpg" alt="Team Photo">
-                    <img src="./images/rodrigo_gana.jpg" alt="Tournament">
+                <div class="carousel-wrapper" id="carousel">
+                    <img src="images/kinesis_20-02-2026.jpeg" alt="Training">
+                    <img src="images/fondo_1.jpg" alt="Gym">
+                    <img src="images/fondo_2.jpg" alt="Rolling">
+                    <img src="images/hero.jpg" alt="Group">
+                    <img src="images/rodrigo_gana.jpg" alt="Competitors">
                 </div>
-                <button class="carousel-btn prev" id="prevBtn">❮</button>
-                <button class="carousel-btn next" id="nextBtn">❯</button>
-            </div>
-        </section>
-
-        <section id="schedule" class="section">
-            <div class="container">
-                <div class="schedule-card">
-                    <h2 data-i18n="nav_schedule">Schedule</h2>
-                    <div id="schedule-content" data-i18n="schedule_content" class="text-block"></div>
-                </div>
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">❮</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)">❯</button>
             </div>
         </section>
 
         <section id="contact" class="section">
             <div class="container grid-2">
-                <div class="contact-form">
+                <div class="contact-info">
                     <h2 data-i18n="nav_contact">Contact</h2>
-                    <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST">
-                        <input type="text" name="name" placeholder="Name" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <textarea name="message" placeholder="Message" rows="4" required></textarea>
-                        <button type="submit" class="btn btn-full" data-i18n="contact_btn">Send</button>
-                    </form>
+                    <p><i class="fas fa-map-marker-alt"></i> 1761 Main St, Winnipeg, MB R2V 1Z8</p>
+                    <div class="map-responsive">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2567.870335805503!2d-97.11894002347317!3d49.93883407149793!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea7054f02f9e43%3A0x6e78864706593f6!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
                 </div>
-                <div class="contact-map">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d2567.89234857!2d-97.1189433!3d49.9388338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x42ea29457788448b%3A0x6440618077755c0!2s1761%20Main%20St%2C%20Winnipeg%2C%20MB%20R2V%201Z8!5e0!3m2!1sen!2sca!4v1700000000000" width="100%" height="300" style="border:0; border-radius: 10px;" allowfullscreen="" loading="lazy"></iframe>
-                    <p style="margin-top:15px; color:var(--accent); font-weight: bold;">
-                        <i class="fas fa-map-marker-alt"></i> 1761 Main St, Winnipeg, MB R2V 1Z8
-                    </p>
-                </div>
+                <form action="https://formsubmit.co/kinesis.bjj@gmail.com" method="POST" class="contact-form">
+                    <input type="text" name="name" placeholder="Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <textarea name="message" rows="4" placeholder="Message" required></textarea>
+                    <button type="submit" class="btn btn-full" data-i18n="contact_btn">Send Message</button>
+                </form>
             </div>
         </section>
     </main>
