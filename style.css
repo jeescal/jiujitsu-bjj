@@ -1,40 +1,50 @@
-:root {
-    --accent: #d4af37;
-    --dark: #0b0b0b;
-    --light: #1a1a1a;
-    --white: #f4f4f4;
+/* --- CORRECCIÓN DE GRID Y TEXTO --- */
+.container { max-width: 1200px; margin: auto; padding: 0 40px; }
+.grid-2 { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px; 
+    align-items: flex-start; /* Alinea arriba para evitar cortes */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Segoe UI', sans-serif; background: var(--dark); color: var(--white); line-height: 1.6; }
+/* --- CARRUSEL ROBUSTO --- */
+.carousel-container { 
+    position: relative; 
+    width: 100%; 
+    max-width: 900px; 
+    margin: 40px auto; 
+    overflow: hidden; 
+    border-radius: 12px;
+    height: 500px; /* Altura fija para evitar el negro */
+    background: #111; 
+}
+.carousel-wrapper { 
+    display: flex; 
+    height: 100%; 
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); 
+}
+.carousel-wrapper img { 
+    width: 100%; 
+    height: 100%; 
+    flex-shrink: 0; 
+    object-fit: cover; /* Asegura que la imagen llene el espacio */
+}
 
-/* Navbar Laptop */
-header { background: rgba(0,0,0,0.95); position: fixed; width: 100%; top: 0; z-index: 1000; border-bottom: 1px solid var(--accent); }
-.navbar { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; height: 80px; max-width: 1400px; margin: auto; }
-.logo img { height: 50px; }
-.nav-links { display: flex; list-style: none; gap: 20px; }
-.nav-links a { color: white; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; }
+/* --- FORMULARIO ALINEADO --- */
+.contact-form { display: flex; flex-direction: column; width: 100%; }
+.form-group { display: flex; flex-direction: column; gap: 15px; }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: #222;
+    border: 1px solid var(--accent);
+    color: white;
+    font-size: 1rem;
+}
+.btn-full { width: 100%; cursor: pointer; }
 
-/* Grid System - Evita el colapso del texto */
-.container { max-width: 1200px; margin: auto; padding: 0 20px; }
-.section { padding: 100px 0 60px; }
-.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-.bg-dark { background: var(--light); }
-
-/* Hero */
-.hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
-.hero h1 { font-size: clamp(2rem, 5vw, 4rem); color: var(--accent); }
-
-/* Carrusel Reparado */
-.carousel-container { position: relative; width: 100%; max-width: 900px; margin: auto; overflow: hidden; border-radius: 10px; background: #222; height: 500px; }
-.carousel-wrapper { display: flex; transition: transform 0.5s ease; height: 100%; }
-.carousel-wrapper img { width: 100%; flex-shrink: 0; object-fit: cover; }
-.carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: var(--accent); border: none; padding: 20px; cursor: pointer; z-index: 5; font-size: 20px; }
-.next { right: 0; } .prev { left: 0; }
-
-/* Responsive */
-@media (max-width: 768px) {
+/* --- RESPONSIVE LAPTOP/MOBILE --- */
+@media (max-width: 1024px) {
     .grid-2 { grid-template-columns: 1fr; text-align: center; }
-    .nav-links { display: none; } /* Ocultar en móvil para usar el menú hamburguesa */
-    .carousel-container { height: 300px; }
+    .carousel-container { height: 350px; }
 }
